@@ -9,6 +9,7 @@ export default function Navbar() {
     <NavLink>DashBoard</NavLink>
     <NavLink to={'/menu'}>Our Menu</NavLink>
     <NavLink to={'/shop'}>Our Shop</NavLink>
+    <NavLink to={'/login'}>Login</NavLink>
     </>
 
 
@@ -50,7 +51,7 @@ export default function Navbar() {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn">Button</a>
+                <NavLink to={'/login'}>Login</NavLink>
                 </div>
             </div>
         </div>
