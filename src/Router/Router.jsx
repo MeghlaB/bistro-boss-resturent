@@ -9,6 +9,8 @@ import Menu from "../Pages/Menu/Menu/Menu";
 import OurShop from "../OurShop/OurShop";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUP/SignUp";
+import Screat from "../Pages/Screat/Screat";
+import Privet from "../PrivetRoute/Privet";
 
   const router = createBrowserRouter([
     {
@@ -27,6 +29,10 @@ import SignUp from "../Pages/SignUP/SignUp";
           path:'shop/:category',
           element:<OurShop></OurShop>
         },
+        // {
+        //   path:'shop/:category',
+        //   element:<OurShop></OurShop>
+        // },
         {
           path:'login',
           element:<Login></Login>
@@ -34,6 +40,10 @@ import SignUp from "../Pages/SignUP/SignUp";
         {
           path:'signUp',
           element:<SignUp></SignUp>
+        },
+        {
+          path:'screat',
+          element:<Privet><Screat></Screat></Privet>
         }
       ]
     },

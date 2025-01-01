@@ -2,13 +2,18 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import { AuthContext } from '../../Provider/AuthProvider';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import Swal from 'sweetalert2';
 
 export default function Login() {
     const [disabled, setDisabled] = useState(true); // Submit button disabled state
     const { SIgnIn } = useContext(AuthContext); // SignIn function from context
+
+    const navigate = useNavigate()
+    const location = useLocation()
+
+    const from = location?.state?.from?.pathname || "/"
 
     useEffect(() => {
         // Initialize Captcha
@@ -33,6 +38,8 @@ export default function Login() {
                     icon: "success",
                     draggable: true
                   });
+
+                  navigate(from)
             })
             .catch((err) => {
                 console.error('Sign In Error:', err.message);

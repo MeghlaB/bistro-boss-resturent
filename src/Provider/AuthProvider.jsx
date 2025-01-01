@@ -8,7 +8,7 @@ import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged,
 
 export const AuthContext = createContext(null)
 const provider = new GoogleAuthProvider();
-export default function AuthProvider({ children }) {
+export default function AuthProvider({children}) {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
 

@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 import { AuthContext } from '../../Provider/AuthProvider'
+import { TiShoppingCart } from 'react-icons/ti'
 
 export default function Navbar() {
     const { user, signout } = useContext(AuthContext)
@@ -17,10 +18,17 @@ export default function Navbar() {
         <NavLink>Contact Us</NavLink>
         <NavLink>DashBoard</NavLink>
         <NavLink to={'/menu'}>Our Menu</NavLink>
-        <NavLink to={'/shop'}>Our Shop</NavLink>
+        <NavLink to={'/shop/salad'}>Our Shop</NavLink>
+        <NavLink to={'/screat'}>Screat</NavLink>
+        <NavLink>
+        <div className="relative w-fit">
+        <TiShoppingCart className='w-20 h-8' />
+            <span className="absolute -top-1 right-0 h-[14px] w-[14px] text-xl rounded-full ">0</span>
+        </div>
+        </NavLink>
         {
-                        user ? <> <button onClick={handleLogOut} className='btn btn-ghost'>LogOut</button></> : <> <NavLink to={'/login'}>Login</NavLink></>
-                    }
+            user ? <> <button onClick={handleLogOut} className='btn btn-ghost'>LogOut</button></> : <> <NavLink to={'/login'}>Login</NavLink></>
+        }
 
     </>
 
@@ -63,7 +71,7 @@ export default function Navbar() {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                   
+
 
                 </div>
             </div>
