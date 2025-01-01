@@ -1,15 +1,27 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
+import { AuthContext } from '../../Provider/AuthProvider'
 
 export default function Navbar() {
+    const { user, signout } = useContext(AuthContext)
+
+    const handleLogOut = () => {
+        signout()
+            .then(() => { })
+            .catch((err) => console.log(err.message))
+
+    }
 
     const naviOptions = <>
-    <NavLink>Home</NavLink>
-    <NavLink>Contact Us</NavLink>
-    <NavLink>DashBoard</NavLink>
-    <NavLink to={'/menu'}>Our Menu</NavLink>
-    <NavLink to={'/shop'}>Our Shop</NavLink>
-    <NavLink to={'/login'}>Login</NavLink>
+        <NavLink>Home</NavLink>
+        <NavLink>Contact Us</NavLink>
+        <NavLink>DashBoard</NavLink>
+        <NavLink to={'/menu'}>Our Menu</NavLink>
+        <NavLink to={'/shop'}>Our Shop</NavLink>
+        {
+                        user ? <> <button onClick={handleLogOut} className='btn btn-ghost'>LogOut</button></> : <> <NavLink to={'/login'}>Login</NavLink></>
+                    }
+
     </>
 
 
@@ -35,7 +47,7 @@ export default function Navbar() {
                         <ul
                             tabIndex={0}
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-                            
+
                             {naviOptions}
                         </ul>
                     </div>
@@ -47,11 +59,12 @@ export default function Navbar() {
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1  gap-5">
-                      {naviOptions}
+                        {naviOptions}
                     </ul>
                 </div>
                 <div className="navbar-end">
-                <NavLink to={'/login'}>Login</NavLink>
+                   
+
                 </div>
             </div>
         </div>

@@ -4,7 +4,7 @@ import Footer from '../Pages/Shared/Footer'
 import Navbar from '../Pages/Shared/Navbar'
 
 export default function MainLayout() {
-  const noHeaderFooter = location.pathname.includes('login')
+  const noHeaderFooter = location.pathname.includes('login') ||location.pathname.includes('signUp')
   return (
     <div>
      { noHeaderFooter || <Navbar></Navbar>}
