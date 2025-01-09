@@ -7,7 +7,6 @@ export default function UseCart() {
     const axiosSecure = UseAxiosSecuire()
     const {user} = UseAuth()
 
-
     const {refetch,data: cart=[]} = useQuery({
         queryKey:['cart',user?.email],
         queryFn:async()=>{
