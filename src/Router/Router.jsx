@@ -13,6 +13,7 @@ import Screat from "../Pages/Screat/Screat";
 import Privet from "../PrivetRoute/Privet";
 import Dashboard from "../Layout/Dashboard";
 import Cart from "../Pages/Dashboard/Caart/Cart";
+import Allusers from "../Pages/Dashboard/Allusers/Allusers";
 
   const router = createBrowserRouter([
     {
@@ -56,6 +57,11 @@ import Cart from "../Pages/Dashboard/Caart/Cart";
         {
           path:'cart',
           element:<Cart></Cart>
+        },
+        // Admine route
+        {
+          path:'allusers',
+          element:<Allusers></Allusers>
         }
       ]
     }

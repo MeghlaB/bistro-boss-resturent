@@ -1,11 +1,46 @@
 import React from 'react'
 import SectionTitle from '../../../Components/SectionTitle/SectionTitle'
 import UseCart from '../../../CustomHook/UseCart'
+import { FaDeleteLeft } from 'react-icons/fa6'
+import { AiOutlineDelete } from 'react-icons/ai'
+import Swal from 'sweetalert2'
+import UseAxiosSecuire from '../../../CustomHook/UseAxiosSecuire'
 
 export default function Cart() {
-    const [cart] = UseCart()
+    const axiosSecure = UseAxiosSecuire()
+    const [cart,refecth] = UseCart()
     console.log(cart)
     const totalPrice = cart.reduce((total, item) => total + item.price, 0)
+
+    const handledelate = id =>{
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+          }).then((result) => {
+            if (result.isConfirmed) {
+              
+            axiosSecure.delete(`/carts/${id}`)
+            .then(res=>{
+                // console.log(res.data)
+                if(res.data.deletedCount>0){
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Your file has been deleted.",
+                        icon: "success"
+                      });
+                      refecth()
+                }
+            })
+            }
+          });
+    }
+
+
     return (
         <div>
             <div>
@@ -41,8 +76,8 @@ export default function Cart() {
                                         </td>
                                         <td className="py-4 px-6 border-b text-xl font-medium">{item.name}</td>
                                         <td className="py-4 px-6 border-b text-lg font-medium">{item.price}</td>
-                                        <td className="py-4 px-6 border-b text-end">
-                                            <button className="bg-blue-500 hover:scale-110 scale-100 transition-all duration-100 text-white py-2 px-4 rounded-md">Details</button>
+                                        <td onClick={()=>handledelate(item._id)} className="py-4 px-6 border-b text-end">
+                                            <button  className="bg-red-700  btn-lghover:scale-110 scale-100 transition-all duration-100 text-white/75 py-2 px-4 rounded-md"><AiOutlineDelete /></button>
                                         </td>
                                     </tr>
                                 )
