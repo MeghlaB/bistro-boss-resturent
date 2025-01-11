@@ -2,11 +2,12 @@ import React from 'react'
 import { FaAd, FaAlignJustify, FaBookDead, FaCalendar, FaGrinBeam, FaHome, FaList, FaMoneyBillWaveAlt, FaRegUser, FaShoppingBag, FaShoppingCart, FaUser, FaUtensils } from 'react-icons/fa'
 import { FaEnvelope } from 'react-icons/fa6'
 import { NavLink, Outlet } from 'react-router-dom'
+import userAdmin from '../CustomHook/UserAdmin'
 
 export default function Dashboard() {
 
     // TODO: get isAdmon value of databasae
-    const isAdmin = true
+    const [isAdmin] =userAdmin()
 
 
     return (

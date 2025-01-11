@@ -4,11 +4,12 @@ import { useState } from 'react'
 import { createContext } from 'react'
 import auth from '../Firebase/Firebase_Init'
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth'
+import UseAxiosPublic from '../CustomHook/UseAxiosPublic'
 
 const provider = new GoogleAuthProvider();
 export const AuthContext = createContext(null)
 export default function AuthProvider({children}) {
-   
+    const axiosPublic = UseAxiosPublic()
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
 
@@ -49,6 +50,21 @@ const GoogleLogin = () => {
 useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
         setUser(currentUser);
+        if(currentUser){
+               // get token and store client
+            const userInfo = {email:currentUser.email}
+
+            axiosPublic.post('/jwt',userInfo)
+            .then(res=>{
+                if(res.data.token){
+                    localStorage.setItem('access-token' , res.data.token)
+                }
+            })
+        }
+        else{
+            // TODO: remove token (if token stored in the client side: Local storage, caching, in memory)
+            localStorage.removeItem('access-token');
+        }
         console.log('Current User ==>', currentUser);
         setLoading(false);
     });
