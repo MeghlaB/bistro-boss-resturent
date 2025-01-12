@@ -18,6 +18,7 @@ import AdminRoute from '../PrivetRoute/AdminRoute'
 import AddItems from "../Pages/Dashboard/AddItems/AddItems";
 import ManageItem from "../Pages/Dashboard/ManageItem/ManageItem";
 import Payment from "../Pages/Dashboard/Payment/Payment";
+import PayementHistory from "../Pages/Dashboard/PaymentHistory/PayementHistory";
 
   const router = createBrowserRouter([
     {
@@ -66,6 +67,10 @@ import Payment from "../Pages/Dashboard/Payment/Payment";
         {
           path:'reservation',
           element:<Payment></Payment>
+        },
+        {
+          path:'payment',
+          element:<PayementHistory/>
         },
         // Admine route
         {
