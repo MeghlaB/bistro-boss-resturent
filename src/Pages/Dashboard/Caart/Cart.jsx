@@ -23,7 +23,6 @@ export default function Cart() {
             confirmButtonText: "Yes, delete it!"
           }).then((result) => {
             if (result.isConfirmed) {
-              
             axiosSecure.delete(`/carts/${id}`)
             .then(res=>{
                 // console.log(res.data)
@@ -49,8 +48,9 @@ export default function Cart() {
                     headings={'WANNA ADD MORE?'}
                 >
                 </SectionTitle>
-
+               
                 <div className="overflow-x-auto">
+                
                     <div className='px-10 flex justify-around'>
                         <h3 className='text-xl font-bold'>Total Oders:{cart.length}</h3>
                         <h3 className='text-xl font-bold'>Total Price:{totalPrice}</h3>

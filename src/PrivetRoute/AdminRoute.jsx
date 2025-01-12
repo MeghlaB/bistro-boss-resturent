@@ -17,6 +17,6 @@ if(user && isAdmin){
 }
 
   return (
-    <Navigate to={'/login'} state={{from: location.pathname }}></Navigate>
+    <Navigate to={'/'} state={{from: location.pathname }}></Navigate>
   )
 }
