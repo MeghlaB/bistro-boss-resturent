@@ -5,6 +5,7 @@ import { FaDeleteLeft } from 'react-icons/fa6'
 import { AiOutlineDelete } from 'react-icons/ai'
 import Swal from 'sweetalert2'
 import UseAxiosSecuire from '../../../CustomHook/UseAxiosSecuire'
+import { Link } from 'react-router-dom'
 
 export default function Cart() {
     const axiosSecure = UseAxiosSecuire()
@@ -54,7 +55,11 @@ export default function Cart() {
                     <div className='px-10 flex justify-around'>
                         <h3 className='text-xl font-bold'>Total Oders:{cart.length}</h3>
                         <h3 className='text-xl font-bold'>Total Price:{totalPrice}</h3>
-                        <button className="btn btn-warning">pay</button>
+                       {
+                        cart.length? <Link to={'/dashboard/reservation'}><button className="btn btn-warning">pay</button></Link>:
+                        <button disabled className="btn btn-warning">pay</button>
+
+                       }
 
                     </div>
                     <table className="min-w-[90%] shadow-md border mx-auto border-gray-100 my-6">

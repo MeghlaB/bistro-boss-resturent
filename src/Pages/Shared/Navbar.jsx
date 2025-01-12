@@ -22,7 +22,7 @@ export default function Navbar() {
         <NavLink to={'/menu'}>Our Menu</NavLink>
         <NavLink to={'/shop/salad'}>Our Shop</NavLink>
         <NavLink to={'/screat'}>Screat</NavLink>
-        <NavLink to={'/dashboard'}>
+        <NavLink to={'/dashboard/cart'}>
         <div className="relative w-fit">
         <TiShoppingCart className='w-20 h-8' />
             <span className="absolute -top-1 right-0 h-[14px] w-[14px] text-xl rounded-full ">+{cart.length}</span>
